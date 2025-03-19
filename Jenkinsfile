@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('scm') {
             steps {
-        git branch: 'main', url: 'https://github.com/anto096/simple-web-app.git'
+        git branch: 'main', url: 'https://github.com/Chan-kongu/DevOps.git'
             }
         }
         stage('build') {
@@ -16,15 +16,15 @@ pipeline {
 stage('build to images') {
             steps {
                script{
-                  sh 'docker build -t demohub/simplewebapp .'
+                  sh 'docker build -t chan2004/simplewebapp .'
                }
     }
 }
 stage('push to hub') {
             steps {
                script{
-                 withDockerRegistry(credentialsId: 'Docker_cred', url: 'https://index.docker.io/v1/') {
-                  sh 'docker push demohub/simplewebapp'
+                 withDockerRegistry(credentialsId: 'docker_cred', url: 'https://index.docker.io/v1/') {
+                  sh 'docker push chan2004/simplewebapp'
                }
             }
             }
